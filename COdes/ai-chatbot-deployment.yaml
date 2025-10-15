@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ai-chatbot-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ai-chatbot
+  template:
+    metadata:
+      labels:
+        app: ai-chatbot
+    spec:
+      containers:
+      - name: ai-chatbot
+        image: zhodo/ai-chatbot-wrapper:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5000
+        env:
+        - name: OPENAI_API_KEY
+          value: "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"
+
+
+
